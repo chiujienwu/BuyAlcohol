@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BuyAlcohol.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Country" Clicked="Add_Country_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <!--<Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>-->
+        
+        <Label Text="When Can I Legally Buy Alcohol" FontSize="Title" Padding="30,10,30,10"/>
+        
+        <Entry x:Name="Input_Age" Placeholder="Please enter your current age" PlaceholderColor="Blue" />
+
+        <Picker x:Name="Input_Country" Title="Select Country" FontSize="Medium">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Country 1</x:String>
+                    <x:String>Country 2</x:String>
+                    <x:String>Country 3</x:String>
+                    <x:String>Country 4</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Button Text="Calculate Age" x:Name="Btn_BMI" Clicked="Calc_Age"></Button>
+        
+        <Label Text="By Country (in Years)" FontSize="Title" Padding="30,10,30,10"/>
+        
+        <Label x:Name="USA" Text="USA Age" FontSize="Large" Padding="30,10,30,10"/>
+        <Label x:Name="VSA" Text="VSA Age" FontSize="Large" Padding="30,10,30,10"/>
+        <Label x:Name="WSA" Text="WSA Age" FontSize="Large" Padding="30,10,30,10"/>
+        <Label x:Name="XSA" Text="XSA Age" FontSize="Large" Padding="30,10,30,10"/>
+    </StackLayout>
+
+</ContentPage>
