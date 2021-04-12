@@ -10,15 +10,36 @@ namespace BuyAlcohol
 {
     public partial class MainPage : ContentPage
     {
+        public DateTime dob;
+        public int age;
+        public DateTime today;
+
         public MainPage()
         {
             InitializeComponent();
         }
 
+        public void OnDateSelected(Object sender, DateChangedEventArgs args)
+        {
+            dob = Input_DOB.Date;
+
+            today = DateTime.Today;
+
+            age = today.Year - dob.Year;
+
+            if (today.Month < dob.Month || (today.Month == dob.Month && today.Day < dob.Day))
+            {
+                age--;
+            }
+        }
+
+
         public void Calc_Age(Object sender, System.EventArgs e)
         {
-            int age = Int32.Parse(Input_Age.Text);
-            int usa, vsa, wsa, xsa;
+            // age = Int32.Parse(Input_Age.Text);
+            int usa, vsa, wsa, xsa, beforeAge21;
+
+
 
             //usa legal age
             if (age < 21)
@@ -30,7 +51,7 @@ namespace BuyAlcohol
             }
 
             //vsa legal age
-            if (age < 25)
+            if (age < 18)
             {
                 vsa = 25 - age;
             }
@@ -40,7 +61,7 @@ namespace BuyAlcohol
             }
 
             //wsa legal age
-            if (age < 30)
+            if (age < 16)
             {
                 wsa = 30 - age;
             }
@@ -50,7 +71,7 @@ namespace BuyAlcohol
             }
 
             //xsa legal age
-            if (age < 35)
+            if (age < 22)
             {
                 xsa = 35 - age;
             }
@@ -59,6 +80,7 @@ namespace BuyAlcohol
                 xsa = 0;
             }
 
+            Before.Text = $"Years before turning 21: {usa}";
             USA.Text = $"USA: {usa} years before buying";
             VSA.Text = $"VSA: {vsa} years before buying";
             WSA.Text = $"WSA: {wsa} years before buying";
