@@ -13,6 +13,7 @@ namespace BuyAlcohol
         public DateTime dob;
         public int age;
         public DateTime today;
+        int usa, vsa, wsa, xsa;
 
         public MainPage()
         {
@@ -34,13 +35,10 @@ namespace BuyAlcohol
         }
 
 
-        public void Calc_Age(Object sender, System.EventArgs e)
+        public void Calc_Age()
         {
             // age = Int32.Parse(Input_Age.Text);
-            int usa, vsa, wsa, xsa, beforeAge21;
-
-
-
+            
             //usa legal age
             if (age < 21)
             {
@@ -81,16 +79,46 @@ namespace BuyAlcohol
             }
 
             Before.Text = $"Years before turning 21: {usa}";
-            USA.Text = $"USA: {usa} years before buying";
-            VSA.Text = $"VSA: {vsa} years before buying";
-            WSA.Text = $"WSA: {wsa} years before buying";
-            XSA.Text = $"XSA: {xsa} years before buying";
+            //USA.Text = $"USA: {usa} years before buying";
+            //VSA.Text = $"VSA: {vsa} years before buying";
+            //WSA.Text = $"WSA: {wsa} years before buying";
+            //XSA.Text = $"XSA: {xsa} years before buying";
 
         }
 
-        public void Add_Country_Clicked(Object sender, EventArgs eventArgs)
+        //public void Add_Country_Clicked(Object sender, EventArgs eventArgs)
+        //{
+        //    DisplayAlert("Add Country", "Add was selected", "Button 2", "Button 1");
+        //}
+
+        private void Input_Country_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DisplayAlert("Add Country", "Add was selected", "Button 2", "Button 1");
+            Calc_Age();
+
+            var picker = sender as Picker;
+
+            var value = picker.ItemsSource[picker.SelectedIndex] as String;
+
+            Country.Text = $"Country you selected is {value}";
+
+            switch(value)
+            {
+                case "USA":
+                    Legal.Text = $"USA: {usa} years before buying";
+                    break;
+                case "VSA":
+                    Legal.Text = $"VSA: {vsa} years before buying";
+                    break;
+                case "WSA":
+                    Legal.Text = $"WSA: {wsa} years before buying";
+                    break;
+                case "XSA":
+                    Legal.Text = $"XSA: {xsa} years before buying";
+                    break;
+                default:
+                    DisplayAlert("Error", "Country not found", "OK");
+                    break;
+            }
         }
     }
 }

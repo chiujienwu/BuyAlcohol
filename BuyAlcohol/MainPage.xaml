@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BuyAlcohol.MainPage">
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Country" Clicked="Add_Country_Clicked"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
 
     <StackLayout>
         <!--<Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
@@ -18,7 +18,7 @@
 
         <DatePicker x:Name="Input_DOB" Format="d" Margin="30,10,30,10" DateSelected="OnDateSelected"/>
 
-        <Picker x:Name="Input_Country" Title="Select Country" FontSize="Medium">
+        <Picker x:Name="Input_Country" Title="Select Country" TitleColor="OrangeRed" SelectedIndexChanged="Input_Country_SelectedIndexChanged" FontSize="Medium">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>USA</x:String>
@@ -29,15 +29,15 @@
             </Picker.ItemsSource>
         </Picker>
 
-        <Button Text="Calculate Age" x:Name="Btn_BMI" Clicked="Calc_Age"></Button>
+        <!--<Button Text="Calculate Age" x:Name="Btn_BMI" Clicked="Calc_Age"></Button>-->
         
         <Label Text="By Country (in Years)" FontSize="Title" Padding="30,10,30,10"/>
 
         <Label x:Name="Before" Text="Age before 21" FontSize="Medium" Padding="30,10,30,10"/>
-        <Label x:Name="USA" Text="USA Age" FontSize="Medium" Padding="30,10,30,10"/>
-        <Label x:Name="VSA" Text="VSA Age" FontSize="Medium" Padding="30,10,30,10"/>
-        <Label x:Name="WSA" Text="WSA Age" FontSize="Medium" Padding="30,10,30,10"/>
-        <Label x:Name="XSA" Text="XSA Age" FontSize="Medium" Padding="30,10,30,10"/>
+        <Label x:Name="Legal" Text="" FontSize="Medium" Padding="30,10,30,10"/>
+
+        <Label x:Name="Country" Text="Country Selected" FontSize="Medium" Padding="30,10,30,10"/>
+        
     </StackLayout>
 
 </ContentPage>
